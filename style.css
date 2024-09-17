@@ -1,0 +1,493 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  overflow-x: hidden;
+  /* z-index: 0; */
+}
+
+/* Animasi muncul dari atas dengan opacity */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* Muncul dari atas */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+}
+
+/* Navbar yang akan dianimasikan */
+.navbar-animate {
+  animation: fadeInDown 1s ease-in-out; /* Animasi muncul dari atas */
+}
+
+/* Animasi untuk elemen ul li dalam navbar */
+.navbar-animate ul li {
+  opacity: 0;
+  animation: fadeInDown 1.2s ease-in-out forwards;
+}
+
+.navbar-animate ul li:nth-child(1) {
+  animation-delay: 0.2s; /* Delay untuk link pertama */
+}
+
+.navbar-animate ul li:nth-child(2) {
+  animation-delay: 0.4s; /* Delay untuk link kedua */
+}
+
+.navbar-animate img {
+  opacity: 0;
+  animation: fadeInDown 1s ease-in-out forwards;
+}
+
+/* Animasi Glow Border tetap berjalan */
+@keyframes glowBorder {
+  0% {
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ff0080, 0 0 15px #ff0080, 0 0 20px #ff0080;
+  }
+  25% {
+    border-radius: 20px;
+    box-shadow: 0 0 5px #ff8c00, 0 0 15px #ff8c00, 0 0 20px #ff8c00;
+  }
+  50% {
+    border-radius: 30px;
+    box-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  }
+  75% {
+    border-radius: 40px;
+    box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
+  }
+  100% {
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ff0080, 0 0 15px #ff0080, 0 0 20px #ff0080;
+  }
+}
+
+.navbar {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  border-radius: 5px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #17171f;
+  animation: glowBorder 3s ease-in-out infinite; /* Glow border tetap berjalan */
+}
+
+.navbar img {
+  height: 45px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin: 0 10px;
+}
+
+.navbar ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* About Section */
+.about-section {
+  padding: 50px 20px;
+  margin: 100px 20px;
+  text-align: center;
+  color: white;
+  border-radius: 45px;
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  animation: gradientShift 45s ease infinite;
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  z-index: 10;
+  font-family: "Times New Roman", Times, serif;
+  /* animation: blinkColors 1s infinite linear; */
+}
+
+.about-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  z-index: 10;
+  font-family: "Arial", sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#main {
+  padding: 30px 40px;
+  margin: 10px 20px;
+  text-align: center;
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  border-radius: 50px;
+  background-size: 400% 400%;
+  animation: gradientShift 45s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Seluruh section tetap berada di depan animasi */
+.about-section,
+#main {
+  position: relative;
+  z-index: 10; /* Elemen berada di atas animasi */
+}
+
+#main::before,
+#main::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Lingkaran animasi */
+.circle1,
+.circle2,
+.circle3,
+.particle {
+  position: fixed; /* Membuat elemen tidak mempengaruhi layout */
+  z-index: 0; /* Pastikan elemen animasi di belakang */
+  pointer-events: none;
+}
+
+/* Tambahan lingkaran dengan gerakan bervariasi */
+.circle1 {
+  width: 250px;
+  height: 250px;
+  top: 100px;
+  left: -50px;
+  background: rgba(107, 86, 228, 0.255);
+  animation: moveCircle1 20s ease-in-out infinite;
+}
+
+.circle2 {
+  width: 350px;
+  height: 350px;
+  bottom: -150px;
+  right: -150px;
+  background: rgba(255, 91, 91, 0.15);
+  animation: moveCircle2 25s ease-in-out infinite;
+}
+
+.circle3 {
+  width: 100px;
+  height: 100px;
+  top: 200px;
+  right: 50px;
+  background: rgba(63, 94, 251, 0.2);
+  animation: moveCircle3 12s ease-in-out infinite;
+}
+
+/* Tambahan bentuk partikel */
+.particle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  animation: moveParticle 5s linear infinite;
+}
+
+/* Keyframes for gradient shift */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keyframes for individual circles */
+@keyframes moveCircle1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(100px, 100px) scale(1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes moveCircle2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-150px, -150px) scale(0.8);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes moveCircle3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(200px, 0) scale(1.5);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Keyframes for particle movement */
+@keyframes moveParticle {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(300px, -300px);
+  }
+}
+
+#main-heading {
+  margin-bottom: 30px;
+  font-size: 35px;
+  z-index: 10;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  animation: blinkColors 1s infinite linear; /* Apply the blinking animation */
+}
+
+/* Keyframes for blinking animation */
+@keyframes blinkColors {
+  0% {
+    color: #484844;
+    text-shadow: none;
+  }
+  18% {
+    color: #484844;
+    text-shadow: none;
+  }
+  20% {
+    color: #fff900;
+    text-shadow: 0 0 7px #fff900, 0 0 20px #ff6c00;
+  }
+  30% {
+    color: #484844;
+    text-shadow: none;
+  }
+  35% {
+    color: #fff900;
+    text-shadow: 0 0 7px #fff900, 0 0 20px #ff6c00;
+  }
+  70% {
+    color: #484844;
+    text-shadow: none;
+  }
+  85% {
+    color: #fff900;
+    text-shadow: 0 0 7px #fff900, 0 0 20px #ff6c00;
+  }
+  90% {
+    color: #484844;
+    text-shadow: none;
+  }
+  100% {
+    color: #484844;
+    text-shadow: none;
+  }
+}
+
+.game-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-bottom: 50px;
+  z-index: 10;
+}
+
+@keyframes glowBorder {
+  0% {
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ff0080, 0 0 15px #ff0080, 0 0 20px #ff0080;
+  }
+  25% {
+    border-radius: 20px;
+    box-shadow: 0 0 5px #ff8c00, 0 0 15px #ff8c00, 0 0 20px #ff8c00;
+  }
+  50% {
+    border-radius: 30px;
+    box-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  }
+  75% {
+    border-radius: 40px;
+    box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
+  }
+  100% {
+    border-radius: 10px;
+    box-shadow: 0 0 5px #ff0080, 0 0 15px #ff0080, 0 0 20px #ff0080;
+  }
+}
+
+.game-item {
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  z-index: 10;
+  animation: glowBorder 3s ease-in-out infinite; /* Apply the animation */
+}
+
+.game-item:hover {
+  transform: scale(1.05);
+}
+
+.game-thumbnail {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.game-details {
+  margin-top: 10px;
+}
+
+.game-details h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.game-details p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.play-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer Styling */
+.footer {
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  margin: 100px 20px;
+  /* margin-top: 60px; */
+  border-radius: 15px;
+  animation: gradientShift 45s ease infinite;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+  z-index: 10;
+}
+
+.footer p {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2em;
+  z-index: 10;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+.social-icons a svg {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s;
+}
+
+.social-icons a svg:hover {
+  transform: scale(1.2);
+}
+
+/* Animasi muncul dari kiri */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); /* Muncul dari kiri */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Kembali ke posisi semula */
+  }
+}
+
+/* Animasi muncul dari kanan */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px); /* Muncul dari kanan */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Kembali ke posisi semula */
+  }
+}
+
+/* Animasi muncul dari bawah */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px); /* Muncul dari bawah */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+}
+
+/* Menambahkan class untuk animasi */
+.about-section.animate-about {
+  animation: slideInLeft 1s ease-in-out; /* Muncul dari kiri */
+}
+
+#main.animate-main {
+  animation: slideInRight 1s ease-in-out; /* Muncul dari kanan */
+}
+
+.footer.animate-footer {
+  animation: slideInUp 1s ease-in-out; /* Muncul dari bawah */
+}
